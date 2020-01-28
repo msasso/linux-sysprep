@@ -346,10 +346,9 @@ net_hostname() {
 	verbose
 }
 
-# Todo
 net_hwaddr() {
 	verbose "# Remove HWADDR (hard-coded MAC address) configuration"
-	run
+	run "sed -i -re '/^\s*UUID=/d' -e '/^\s*HWADDR=/d' /etc/sysconfig/network-scripts/ifcfg-*"
 	verbose
 }
 
